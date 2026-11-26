@@ -94,6 +94,8 @@ class Handler(BaseHTTPRequestHandler):
             "/": lambda: self._static("index.html"),
             "/report": lambda: self._root_file("REPORT.md", "text/plain"),
             "/readme": lambda: self._root_file("README.md", "text/plain"),
+            "/explainer": lambda: self._root_file("EXPLAINER.pdf", "application/pdf"),
+            "/diagrams": lambda: self._root_file("docs/DIAGRAMS.md", "text/plain"),
             "/api/health": lambda: self._json(200, {"ok": True, "service": "fortivex-voice-agent",
                                                     "sessions": len(AGENT.sessions)}),
             "/api/leads": lambda: self._json(200, {"ok": True, "leads": crm.list_leads()}),

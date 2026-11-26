@@ -2,6 +2,8 @@
 
 A working, **free** prototype of an AI sales caller: it listens and speaks, qualifies a lead in real time, answers from a knowledge base, books a meeting into a CRM, and writes a call summary. Built with the Python standard library + browser speech APIs. **No API keys, no pip installs, no model downloads.**
 
+**Presentation pack:** `EXPLAINER.pdf` (9 pages, plain English, a diagram on nearly every page), `docs/DIAGRAMS.md` (10 diagrams that render on GitHub), `REPORT.md` / `REPORT.pdf` (the required 1-page report), and `docs/architecture.svg`.
+
 ---
 
 ## 1. Run it (60 seconds)
@@ -48,7 +50,8 @@ Open **http://127.0.0.1:8765** in **Chrome or Edge**. (Alternatively `bash run.s
 fortivex-voice-agent/
 ├── app.py                  # entry point → python3 app.py
 ├── README.md               # this file
-├── REPORT.md               # required 1-page report
+├── REPORT.md / REPORT.pdf  # required 1-page report
+├── EXPLAINER.pdf           # 9-page detailed, simple explanation with diagrams
 ├── requirements.txt        # intentionally empty: standard library only
 ├── run.sh / run.bat        # launchers
 ├── voice_agent/
@@ -60,7 +63,8 @@ fortivex-voice-agent/
 │   └── server.py           # JSON API + static/docs serving
 ├── static/                 # index.html, style.css, app.js (the UI)
 ├── knowledge/              # product.md, pricing.md, integrations.md, security.md
-├── docs/                   # architecture.svg, architecture.mmd
+├── docs/                   # architecture.svg, architecture.mmd, DIAGRAMS.md
+├── tools/                  # dev-only PDF generators (Pillow / stdlib)
 ├── tests/test_workflow.py  # 5 end-to-end tests
 └── data/crm.db             # created on first run (demo data)
 ```
@@ -149,7 +153,16 @@ The repository already contains `REPORT.md`, `README.md`, the architecture diagr
 
 ---
 
-## 10. Interview talking points
+## 10. Five-minute presentation script
+
+1. Open the app and click **Run demo call**. Let Ava speak for ~20 seconds.
+2. Point at the live score changing **25 → 75 → 100** as the caller gives budget, timeline and authority.
+3. When Ava answers the Hindi/CRM question, show the **source citations** in the "Knowledge used" panel.
+4. Show the **confirmed appointment** in the Meeting panel (this is the CRM write).
+5. Click **End & summarize** and read the business insights aloud.
+6. Open `docs/architecture.svg`, then `EXPLAINER.pdf` page 3 (call journey) and page 8 (scale-out).
+
+## 11. Interview talking points
 
 - **Why rule-based NLP?** Deterministic, offline, explainable and fast to demo. It makes every decision debuggable live; the same interfaces accept an LLM later without changing the API.
 - **Why RAG instead of fine-tuning?** Product facts change often; retrieval with citations updates by editing a markdown file and avoids hallucinations.

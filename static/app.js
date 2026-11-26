@@ -126,7 +126,7 @@ function updatePanels(r) {
       return `${x.toFixed(1)},${y.toFixed(1)}`;
     }).join(" ");
     $("sparkLine").setAttribute("points", points);
-    $("sparkLine").setAttribute("stroke", history[history.length - 1] < 0 ? "#ff6b7a" : "#37d3a0");
+    $("sparkLine").setAttribute("stroke", history[history.length - 1] < 0 ? "#b91c1c" : "#15803d");
   }
 
   $("sources").innerHTML = "";
