@@ -1,0 +1,38 @@
+flowchart LR
+  subgraph Client["Browser (Chrome / Edge)"]
+    MIC["Microphone"] --> STT["Web Speech API<br/>SpeechRecognition (STT)"]
+    UI["Dashboard<br/>static/app.js"] --> STT
+    TTS["speechSynthesis (TTS)"] --> SPK["Speakers"]
+    UI --> DASH["Live lead score · sentiment<br/>sources · booking · summary"]
+  end
+
+  STT -->|"POST /api/message (JSON)"| API["Python stdlib HTTP API<br/>ThreadingHTTPServer<br/>server.py"]
+  API --> AGENT["Conversation state machine<br/>agent.py<br/>GREETING → QUALIFYING → PRESENTING → SCHEDULING → CLOSED"]
+
+  AGENT --> NLP["nlp.py<br/>intents · slots · BANT<br/>sentiment · language"]
+  AGENT --> RAG["rag.py<br/>TF-IDF retrieval<br/>+ source citations"]
+  AGENT --> CRM["crm.py<br/>leads · appointments<br/>messages · summaries"]
+  AGENT --> SUM["Call summary<br/>+ business insights"]
+
+  RAG --> KB[("knowledge/*.md<br/>product · pricing<br/>integrations · security")]
+  CRM --> DB[("data/crm.db<br/>SQLite")]
+  NLP --> MEM[("Session state<br/>slots · transcript · score")]
+  AGENT --> TTS
+  API --> DASH
+
+  subgraph Production["Production scale-out path (100k users)"]
+    GW["Telephony gateway<br/>Twilio / SIP → Whisper"] --> LB["Load balancer + TLS"]
+    LB --> W["Stateless app replicas<br/>(8–16 pods, autoscale)"]
+    W --> REDIS[("Redis<br/>session state + cache")]
+    W --> PG[("PostgreSQL<br/>tenant-partitioned")]
+    W --> VEC[("Vector DB<br/>embeddings + rerank")]
+    W --> Q["Job queue<br/>summary · CRM sync · reminders"]
+    W --> OBS["Logs · metrics · alerts · audit"]
+  end
+
+  classDef proto fill:#14233a,stroke:#37d3a0,color:#e8eef9;
+  classDef store fill:#102e26,stroke:#37d3a0,color:#e8eef9;
+  classDef prod fill:#16203a,stroke:#5b9cff,color:#e8eef9;
+  class STT,TTS,API,AGENT,NLP,RAG,CRM,SUM,DASH proto;
+  class KB,DB,MEM store;
+  class GW,LB,W,REDIS,PG,VEC,Q,OBS prod;

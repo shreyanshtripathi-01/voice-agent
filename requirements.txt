@@ -1,0 +1,3 @@
+# Intentionally empty: this project uses only the Python 3.10+ standard library.
+# Voice is provided by the browser (Web Speech API), not by a paid service.
+# No pip install is needed.

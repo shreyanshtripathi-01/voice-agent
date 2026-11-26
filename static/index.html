@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fortivex AI — Autonomous Sales Voice Agent</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="20" height="20"><path d="M4 6h5l7 11 7-11h5L19 20v6h-6v-6L4 6z" fill="currentColor"/></svg>
+        </div>
+        <div>
+          <div class="brand-name">Fortivex AI <span>/ Voice Sales Agent</span></div>
+          <div class="brand-sub">Autonomous lead qualification · RAG · appointment booking</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span class="pill"><span class="dot"></span> Live prototype · free stack</span>
+        <a class="link-btn" href="/report" target="_blank" rel="noopener">1-page report</a>
+        <a class="link-btn" href="/docs/architecture.svg" target="_blank" rel="noopener">Architecture</a>
+        <a class="link-btn" href="/readme" target="_blank" rel="noopener">README</a>
+        <button id="resetBtn" class="ghost-btn small">Reset demo</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="card call-card">
+        <div class="card-head">
+          <div>
+            <h2>Call console</h2>
+            <p class="muted">Ava · AI sales development representative</p>
+          </div>
+          <span id="stageBadge" class="stage">Ready</span>
+        </div>
+
+        <div class="call-meta">
+          <label for="langSelect">Call language</label>
+          <select id="langSelect">
+            <option value="en-IN">English (India)</option>
+            <option value="en-US">English (US)</option>
+            <option value="hi-IN">Hindi (हिन्दी)</option>
+            <option value="es-ES">Spanish (Español)</option>
+          </select>
+          <label class="check"><input type="checkbox" id="ttsToggle" checked> Speak replies</label>
+        </div>
+
+        <div id="transcript" class="transcript" aria-live="polite"></div>
+
+        <div class="composer">
+          <div class="control-row">
+            <button id="micBtn" class="primary-btn">
+              <svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V22h2v-3.08A7 7 0 0 0 19 12h-2z" fill="currentColor"/></svg>
+              <span id="micLabel">Start voice</span>
+            </button>
+            <button id="demoBtn" class="accent-btn">
+              <svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7L8 5z" fill="currentColor"/></svg>
+              Run demo call
+            </button>
+            <button id="endBtn" class="ghost-btn">End &amp; summarize</button>
+          </div>
+          <div class="input-row">
+            <input id="textInput" type="text" placeholder="Type a prospect reply…" autocomplete="off">
+            <button id="sendBtn" class="send-btn" aria-label="Send message">
+              <svg viewBox="0 0 24 24" width="17" height="17"><path d="M3 20l18-8L3 4v6l12 2-12 2v6z" fill="currentColor"/></svg>
+            </button>
+          </div>
+          <p class="hint">Use <b>Start voice</b> and speak, or just type. Voice needs Chrome/Edge; microphone permission is requested by the browser.</p>
+        </div>
+      </section>
+
+      <aside class="side">
+        <section class="card intel-card">
+          <div class="card-head">
+            <div><h2>Lead intelligence</h2><p class="muted">Updates live on every turn</p></div>
+            <span id="gradeBadge" class="grade">—</span>
+          </div>
+          <div class="lead-id">
+            <span id="leadName">Waiting for caller</span>
+            <span id="scoreText" class="mono">0 / 100</span>
+          </div>
+          <div class="score-track"><div id="scoreFill"></div></div>
+          <div class="bant-grid">
+            <div class="bant"><span>Budget</span><div class="bar"><i id="budgetFill"></i></div><b id="budgetVal">0</b></div>
+            <div class="bant"><span>Authority</span><div class="bar"><i id="authorityFill"></i></div><b id="authorityVal">0</b></div>
+            <div class="bant"><span>Need</span><div class="bar"><i id="needFill"></i></div><b id="needVal">0</b></div>
+            <div class="bant"><span>Timeline</span><div class="bar"><i id="timelineFill"></i></div><b id="timelineVal">0</b></div>
+          </div>
+          <div id="slotChips" class="chips"><span class="chip empty">No details yet</span></div>
+        </section>
+
+        <section class="card">
+          <div class="card-head compact"><h2>Sentiment</h2><span id="sentimentTag" class="tag">neutral</span></div>
+          <div class="sentiment-row">
+            <span class="muted small">Call mood</span>
+            <svg id="spark" class="spark" viewBox="0 0 160 40" preserveAspectRatio="none">
+              <line x1="0" y1="20" x2="160" y2="20" stroke="#243450" stroke-width="1"/>
+              <polyline id="sparkLine" points="" fill="none" stroke="#37d3a0" stroke-width="2"/>
+            </svg>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-head compact"><h2>Knowledge sources</h2><span class="tag">RAG</span></div>
+          <div id="sources" class="sources"><p class="muted small">No lookups yet — ask about pricing, languages or security.</p></div>
+        </section>
+
+        <section class="card">
+          <div class="card-head compact"><h2>Appointment / CRM</h2><span id="crmTag" class="tag">SQLite</span></div>
+          <div id="appointment" class="appointment">Not booked yet</div>
+          <div id="slotOptions" class="slot-options"></div>
+          <button id="bookBtn" class="accent-btn wide">Book selected slot</button>
+        </section>
+
+        <section class="card summary-card" id="summaryCard" hidden>
+          <div class="card-head compact">
+            <h2>Call summary &amp; insights</h2>
+            <button id="copyBtn" class="ghost-btn small">Copy</button>
+          </div>
+          <p id="summaryText" class="summary-text"></p>
+          <div id="factsGrid" class="facts-grid"></div>
+          <ul id="insights" class="insights"></ul>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="footer">Runs entirely on your machine · Python standard library + browser speech APIs · No API keys, no paid services</footer>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 830" width="1200" height="830" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7fa8d8"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#37d3a0"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="830" fill="#080e19"/>
+  <text x="40" y="38" fill="#e8eef9" font-size="23" font-weight="700">Fortivex AI — Autonomous Sales Voice Agent</text>
+  <text x="40" y="62" fill="#8ea0bd" font-size="13">System architecture · prototype (solid) and production scale-out path (dashed)</text>
+
+  <!-- Row 1 -->
+  <g>
+    <rect x="40" y="90" width="270" height="110" rx="12" fill="#14233a" stroke="#37d3a0" stroke-width="1.5"/>
+    <text x="60" y="118" fill="#5ee0b0" font-size="12" font-weight="700" letter-spacing="1">BROWSER · CLIENT</text>
+    <text x="60" y="144" fill="#e8eef9" font-size="14">Web Speech API → STT</text>
+    <text x="60" y="166" fill="#c3d4ee" font-size="13">speechSynthesis → TTS</text>
+    <text x="60" y="188" fill="#8ea0bd" font-size="12">UI: score · sentiment · booking</text>
+  </g>
+  <g>
+    <rect x="465" y="90" width="270" height="110" rx="12" fill="#14233a" stroke="#37d3a0" stroke-width="1.5"/>
+    <text x="485" y="118" fill="#5ee0b0" font-size="12" font-weight="700" letter-spacing="1">API LAYER</text>
+    <text x="485" y="144" fill="#e8eef9" font-size="14">Python stdlib HTTP server</text>
+    <text x="485" y="166" fill="#c3d4ee" font-size="13">ThreadingHTTPServer · JSON</text>
+    <text x="485" y="188" fill="#8ea0bd" font-size="12">server.py · no framework needed</text>
+  </g>
+  <g>
+    <rect x="890" y="90" width="270" height="110" rx="12" fill="#14233a" stroke="#37d3a0" stroke-width="1.5"/>
+    <text x="910" y="118" fill="#5ee0b0" font-size="12" font-weight="700" letter-spacing="1">CONVERSATION ENGINE</text>
+    <text x="910" y="144" fill="#e8eef9" font-size="14">State machine · agent.py</text>
+    <text x="910" y="166" fill="#c3d4ee" font-size="13">GREET → QUALIFY → SCHEDULE → CLOSE</text>
+    <text x="910" y="188" fill="#8ea0bd" font-size="12">session state · reply selection</text>
+  </g>
+  <path d="M310 145 L458 145" stroke="#7fa8d8" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="318" y="136" fill="#8ea0bd" font-size="11">HTTP / JSON</text>
+  <path d="M735 145 L883 145" stroke="#7fa8d8" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="745" y="136" fill="#8ea0bd" font-size="11">text + language</text>
+
+  <!-- Dispatch bus to components -->
+  <path d="M1025 200 L1025 230 M172 230 L1042 230 M172 230 L172 255 M467 230 L467 255 M762 230 L762 255 M1042 230 L1042 255"
+        stroke="#37d3a0" stroke-width="1.5" fill="none" marker-end="url(#arrowG)"/>
+  <text x="540" y="222" fill="#5ee0b0" font-size="11">intent-based dispatch</text>
+
+  <!-- Row 2 components -->
+  <g>
+    <rect x="40" y="260" width="265" height="120" rx="12" fill="#14233a" stroke="#37d3a0" stroke-width="1.5"/>
+    <text x="60" y="288" fill="#e8eef9" font-size="14" font-weight="700">nlp.py</text>
+    <text x="60" y="312" fill="#c3d4ee" font-size="12">language · intent · slots</text>
+    <text x="60" y="332" fill="#c3d4ee" font-size="12">sentiment · negation</text>
+    <text x="60" y="352" fill="#8ea0bd" font-size="12">BANT score 0–100</text>
+  </g>
+  <g>
+    <rect x="335" y="260" width="265" height="120" rx="12" fill="#14233a" stroke="#37d3a0" stroke-width="1.5"/>
+    <text x="355" y="288" fill="#e8eef9" font-size="14" font-weight="700">rag.py</text>
+    <text x="355" y="312" fill="#c3d4ee" font-size="12">markdown → section chunks</text>
+    <text x="355" y="332" fill="#c3d4ee" font-size="12">TF-IDF + cosine similarity</text>
+    <text x="355" y="352" fill="#8ea0bd" font-size="12">source-cited answers</text>
+  </g>
+  <g>
+    <rect x="630" y="260" width="265" height="120" rx="12" fill="#14233a" stroke="#37d3a0" stroke-width="1.5"/>
+    <text x="650" y="288" fill="#e8eef9" font-size="14" font-weight="700">crm.py</text>
+    <text x="650" y="312" fill="#c3d4ee" font-size="12">leads · appointments</text>
+    <text x="650" y="332" fill="#c3d4ee" font-size="12">messages · summaries</text>
+    <text x="650" y="352" fill="#8ea0bd" font-size="12">duplicate slot prevention</text>
+  </g>
+  <g>
+    <rect x="925" y="260" width="235" height="120" rx="12" fill="#14233a" stroke="#37d3a0" stroke-width="1.5"/>
+    <text x="945" y="288" fill="#e8eef9" font-size="14" font-weight="700">Summariser</text>
+    <text x="945" y="312" fill="#c3d4ee" font-size="12">extractive call summary</text>
+    <text x="945" y="332" fill="#c3d4ee" font-size="12">facts · insights</text>
+    <text x="945" y="352" fill="#8ea0bd" font-size="12">next best action</text>
+  </g>
+
+  <!-- Row 3 stores -->
+  <path d="M467 380 L467 424 M762 380 L762 424 M1042 380 L1042 424" stroke="#7fa8d8" stroke-width="2" marker-end="url(#arrow)"/>
+  <g>
+    <rect x="335" y="430" width="265" height="80" rx="10" fill="#102e26" stroke="#37d3a0" stroke-width="1.5"/>
+    <text x="355" y="458" fill="#e8eef9" font-size="13" font-weight="700">knowledge/*.md</text>
+    <text x="355" y="480" fill="#8ea0bd" font-size="12">product · pricing · integrations · security</text>
+  </g>
+  <g>
+    <rect x="630" y="430" width="265" height="80" rx="10" fill="#102e26" stroke="#37d3a0" stroke-width="1.5"/>
+    <text x="650" y="458" fill="#e8eef9" font-size="13" font-weight="700">data/crm.db (SQLite)</text>
+    <text x="650" y="480" fill="#8ea0bd" font-size="12">persistent memory + CRM integration</text>
+  </g>
+  <g>
+    <rect x="925" y="430" width="235" height="80" rx="10" fill="#102e26" stroke="#37d3a0" stroke-width="1.5"/>
+    <text x="945" y="458" fill="#e8eef9" font-size="13" font-weight="700">Summary panel</text>
+    <text x="945" y="480" fill="#8ea0bd" font-size="12">handoff brief for human seller</text>
+  </g>
+
+  <!-- Production band -->
+  <rect x="40" y="555" width="1120" height="235" rx="14" fill="#0d1629" stroke="#5b9cff" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="62" y="583" fill="#8ab6ff" font-size="13" font-weight="700" letter-spacing="1">PRODUCTION SCALE-OUT · 1,00,000 USERS</text>
+  <text x="700" y="583" fill="#8ea0bd" font-size="11">same agent logic, stateless workers + managed services</text>
+
+  <g font-size="12">
+    <rect x="60" y="605" width="170" height="72" rx="9" fill="#16203a" stroke="#5b9cff"/>
+    <text x="76" y="632" fill="#e8eef9" font-weight="700">Telephony</text>
+    <text x="76" y="652" fill="#a9c0e0">Twilio / SIP → Whisper</text>
+
+    <rect x="250" y="605" width="160" height="72" rx="9" fill="#16203a" stroke="#5b9cff"/>
+    <text x="266" y="632" fill="#e8eef9" font-weight="700">LB + TLS</text>
+    <text x="266" y="652" fill="#a9c0e0">WAF · rate limits</text>
+
+    <rect x="430" y="605" width="200" height="72" rx="9" fill="#16203a" stroke="#5b9cff"/>
+    <text x="446" y="632" fill="#e8eef9" font-weight="700">App replicas ×8–16</text>
+    <text x="446" y="652" fill="#a9c0e0">autoscale on concurrency</text>
+
+    <rect x="650" y="605" width="150" height="72" rx="9" fill="#16203a" stroke="#5b9cff"/>
+    <text x="666" y="632" fill="#e8eef9" font-weight="700">Redis</text>
+    <text x="666" y="652" fill="#a9c0e0">sessions · cache</text>
+
+    <rect x="820" y="605" width="150" height="72" rx="9" fill="#16203a" stroke="#5b9cff"/>
+    <text x="836" y="632" fill="#e8eef9" font-weight="700">PostgreSQL</text>
+    <text x="836" y="652" fill="#a9c0e0">tenant partitioned</text>
+
+    <rect x="990" y="605" width="150" height="72" rx="9" fill="#16203a" stroke="#5b9cff"/>
+    <text x="1006" y="632" fill="#e8eef9" font-weight="700">Vector DB</text>
+    <text x="1006" y="652" fill="#a9c0e0">embeddings + rerank</text>
+
+    <rect x="430" y="700" width="200" height="68" rx="9" fill="#16203a" stroke="#5b9cff"/>
+    <text x="446" y="727" fill="#e8eef9" font-weight="700">Job queue</text>
+    <text x="446" y="747" fill="#a9c0e0">summary · CRM · reminders</text>
+
+    <rect x="650" y="700" width="490" height="68" rx="9" fill="#16203a" stroke="#5b9cff"/>
+    <text x="666" y="727" fill="#e8eef9" font-weight="700">Observability &amp; security</text>
+    <text x="666" y="747" fill="#a9c0e0">TLS · AES-256 · RBAC · audit logs · latency and conversion dashboards</text>
+  </g>
+  <path d="M230 641 L243 641 M410 641 L423 641 M630 641 L643 641 M800 641 L813 641 M970 641 L983 641"
+        stroke="#7fa8d8" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M530 677 L530 694 M700 677 L700 694" stroke="#7fa8d8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="40" y="816" fill="#5d6f8d" font-size="11">All prototype boxes above are implemented in this repository. The dashed band is the documented path to 100k users (REPORT.md §5–7).</text>
+</svg>
