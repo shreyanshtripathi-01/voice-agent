@@ -1,0 +1,77 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Length 5287 >>
+stream
+BT /F2 13.0 Tf 1 0 0 1 40 802.0 Tm (Autonomous AI Sales Voice Agent - Project Report) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 784.6 Tm (Fortivex AI - Round 3 prototype - Shreyansh Tripathi - 26 Nov 2026) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 771.9 Tm (Business problem. Sales teams miss or mishandle inbound enquiries: no one answers every call, qualification) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 759.1 Tm (is inconsistent, and the CRM is updated late. An AI agent that answers in the caller's language, qualifies) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 746.4 Tm (live, retrieves accurate answers, books the meeting and hands a brief to a seller removes that loss.) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 733.7 Tm (What was built. A laptop-only prototype. "Ava" listens and speaks through the browser's free Web Speech) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 720.9 Tm (APIs, runs a six-stage sales conversation, scores the lead on BANT \(Budget, Authority, Need, Timeline\),) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 708.2 Tm (answers from a cited knowledge base, tracks sentiment, books a conflict-checked appointment into SQLite CRM,) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 695.5 Tm (and generates an extractive summary with insights. Zero paid services, zero third-party packages.) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 682.7 Tm (Technical implementation.) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 670.0 Tm (Layer | Prototype) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 657.3 Tm (Voice | Browser SpeechRecognition \(STT\), speechSynthesis \(TTS\); English / Hindi / Spanish) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 644.5 Tm (Logic | agent.py: session state, intent routing, slot filling, stage machine, localized replies) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 631.8 Tm (NLP | nlp.py: regex slots, Rs. /timeline normalisation, negation-aware sentiment, multilingual) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 619.1 Tm (intents) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 606.4 Tm (RAG | rag.py: markdown -> heading chunks -> TF-IDF + cosine similarity -> source-cited answers) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 593.6 Tm (Memory / CRM | crm.py: SQLite leads, appointments, messages, summaries; no double bookings) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 580.9 Tm (API / UI | server.py: standard-library ThreadingHTTPServer; live score, sparkline, sources, booking) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 568.2 Tm (Workflow demonstrated: greeting -> need/role discovery -> budget + timeline -> authority -> RAG answer with) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 555.4 Tm (citation -> slot choice -> confirmed booking -> AI summary. python3 -m unittest discover -s tests -v proves) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 542.7 Tm (it in 5 tests; the UI's Run demo call repeats it unattended.) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 530.0 Tm (Commercial feasibility. The engine replaces repetitive first-call work. The prototype's knowledge base) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 517.2 Tm (models Starter Rs. 1.5 lakh/yr, Growth Rs. 3.5 lakh/yr, Enterprise Rs. 9 lakh/yr. At 200 Starter customers) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 504.5 Tm (that is Rs. 30 lakh ARR at >70% gross margin; upsells are languages, private RAG, connectors and analytics.) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 491.8 Tm (The pilot itself costs nothing.) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 479.1 Tm (Scalability to 1,00,000 users. The API is stateless: replicas behind a load balancer autoscale on concurrent) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 466.3 Tm (calls. Sessions move to Redis with TTL, SQLite to tenant-partitioned PostgreSQL, markdown retrieval to a) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 453.6 Tm (vector database with embeddings and reranking. Audio enters via Twilio/SIP -> self-hosted Whisper or a) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 440.9 Tm (speech vendor; a queue decouples transcription, summarisation and CRM sync. For ~5k daily actives / 10k) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 428.1 Tm (calls a day: 8-16 app pods, one DB with read replicas, regional object storage. Diagram:) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 415.4 Tm (docs/architecture.svg.) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 402.7 Tm (Data security. Prototype data stays local. Production adds TLS in transit, AES-256 at rest, tenant-scoped) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 389.9 Tm (queries, RBAC, short-lived tokens, audit logs on lead/appointment writes, configurable retention and) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 377.2 Tm (cascading deletion. Browser STT may be vendor-processed; production uses self-hosted STT or a contracted) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 364.5 Tm (provider with a DPA. POST /api/reset wipes demo data.) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 351.8 Tm (Infrastructure, deployment, cost. Prototype: python3 app.py on localhost - Rs. 0. Production: containers on) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 339.0 Tm (Cloud Run/ECS behind HTTPS, managed Postgres + Redis, object storage, CI/CD with tests, structured logs and) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 326.3 Tm (conversion dashboards. Illustrative monthly cost at 100k users: compute $400-900, DB $250, cache $90, speech) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 313.6 Tm ($300-2,000 \(less with self-hosted Whisper\), storage/egress $100, monitoring $50 -> ~$1,200-3,400/month;) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 300.8 Tm (marginal cost per call is a few cents.) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 40 288.1 Tm (> Source, tests, architecture diagram and 1-page report are in this repository. Run bash run.sh.) Tj ET
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000257 00000 n 
+0000000327 00000 n 
+0000000402 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+5741
+%%EOF
