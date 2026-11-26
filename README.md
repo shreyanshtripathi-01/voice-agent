@@ -7,7 +7,7 @@ A working, **free** prototype of an AI sales caller: it listens and speaks, qual
 ## 1. Run it (60 seconds)
 
 ```bash
-cd ~/fortivex-voice-agent
+cd ~/Desktop/fortivex-voice-agent
 python3 app.py
 ```
 
